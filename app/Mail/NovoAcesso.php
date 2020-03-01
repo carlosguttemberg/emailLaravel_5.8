@@ -31,6 +31,10 @@ class NovoAcesso extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.novoAcesso')->with(['nome' => $this->user->name]);
+        return $this->view('emails.novoAcesso')
+                    ->with(['nome'     => $this->user->name, 
+                            'email'    => $this->user->email, 
+                            'dataHora' => now()->setTimezone('America/Sao_Paulo')->format('d-m-Y H:i:s') ])
+                    ->attach(base_path() . '/arquivos/arquivo.pdf');
     }
 }
