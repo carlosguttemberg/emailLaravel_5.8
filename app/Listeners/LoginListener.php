@@ -32,6 +32,10 @@ class LoginListener
         info($event->user->name);
         info($event->user->email);
 
-        Mail::to($event->user)->send(new NovoAcesso($event->user));
+        $quando = now()->addMinutes(5);
+
+        Mail::to($event->user)//->send(new NovoAcesso($event->user));
+                ->queue(new NovoAcesso($event->user));
+                //->later($quando, new NovoAcesso($event->user));
     }
 }
