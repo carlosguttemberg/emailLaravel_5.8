@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\HomeEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Events\HomeEvent;
 
-class HomeEventListener
+class NewHomeListener
 {
     /**
      * Create the event listener.
@@ -21,12 +21,12 @@ class HomeEventListener
     /**
      * Handle the event.
      *
-     * @param  HomeEvent  $event
+     * @param  object  $event
      * @return void
      */
     public function handle(HomeEvent $event)
     {
-        info("Entrou no home");
+        info("Entrou no home New");
         info($event->text);
     }
 }

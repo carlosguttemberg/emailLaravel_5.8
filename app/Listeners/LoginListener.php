@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\HomeEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Auth\Events\Login;
 
-class HomeEventListener
+class LoginListener
 {
     /**
      * Create the event listener.
@@ -21,12 +21,13 @@ class HomeEventListener
     /**
      * Handle the event.
      *
-     * @param  HomeEvent  $event
+     * @param  object  $event
      * @return void
      */
-    public function handle(HomeEvent $event)
+    public function handle(Login $event)
     {
-        info("Entrou no home");
-        info($event->text);
+        info("Logou");
+        info($event->user->name);
+        info($event->user->email);
     }
 }
